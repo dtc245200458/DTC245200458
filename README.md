@@ -1,81 +1,202 @@
-# LongTech - Website Quảng bá Sản phẩm
+# LongTech — Website giới thiệu sản phẩm công nghệ
 
 ## 1. Thông tin đề tài
 
-- Môn học: Triển khai và Quản trị Hệ thống Phần mềm
-- Đề tài: Đề 3 - Website Quảng bá Sản phẩm (WordPress)
-- Tên hệ thống: LongTech
-- Mục tiêu: Triển khai website giới thiệu sản phẩm công nghệ bằng WordPress, kết hợp cơ sở dữ liệu, reverse proxy, giám sát và quản lý log.
+- Môn học: Triển khai và Quản trị Hệ thống Phần mềm.
+- Đề tài: Đề 3 — Website Quảng bá Sản phẩm.
+- Website WordPress giới thiệu 15 sản phẩm: 5 laptop, 5 điện thoại,
+  5 phụ kiện; có trang chi tiết và liên kết nhà sản xuất.
+- Phạm vi: giới thiệu sản phẩm, chưa có đặt hàng hoặc thanh toán.
 
-## 2. Danh mục sản phẩm
+## 2. Kiến trúc
 
-Website hiện có 15 sản phẩm thuộc 3 nhóm:
+- Nginx: reverse proxy tới WordPress.
+- WordPress và MySQL: ứng dụng và cơ sở dữ liệu.
+- phpMyAdmin: quản trị database.
+- Blackbox Exporter: kiểm tra HTTP website qua Nginx.
+- Prometheus: thu thập số liệu mỗi 15 giây.
+- Grafana: dashboard HTTP và truy vấn log.
+- Promtail: đọc log Docker của Nginx, WordPress, MySQL và Grafana.
+- Loki: lưu và truy vấn log tập trung.
 
-1. Laptop: 5 sản phẩm.
-2. Điện thoại: 5 sản phẩm.
-3. Phụ kiện: 5 sản phẩm.
+Mạng:
+- frontend: Nginx, WordPress và Blackbox Exporter.
+- backend (internal): MySQL, WordPress và phpMyAdmin.
+- admin: mạng bổ sung để phpMyAdmin công bố cổng quản trị.
+- monitoring: các dịch vụ giám sát và log.
 
-Mỗi sản phẩm có trang chi tiết và liên kết tham khảo từ nhà sản xuất.
-Website phục vụ giới thiệu sản phẩm, chưa có chức năng đặt hàng hoặc thanh toán.
+## 3. Cấu trúc mã nguồn
 
-## 3. Trạng thái triển khai
+- docker-compose.yml: ứng dụng, database và reverse proxy.
+- docker-compose.monitoring.yml: Prometheus, Grafana, Blackbox Exporter.
+- docker-compose.logging.yml: Loki và Promtail.
+- wordpress/themes/longtech-ready/: mã nguồn theme và tài nguyên.
+- grafana/provisioning/: datasource và dashboard khai báo bằng tệp.
+- scripts/start.sh: khởi chạy toàn bộ hệ thống.
+- scripts/check-system.sh: kiểm tra hệ thống.
+- scripts/backup.sh: sao lưu WordPress, database và cấu hình.
+- scripts/refresh-log-targets.py: cập nhật đường dẫn log container.
+- docs/evidence/: kết quả kiểm tra thực tế.
 
-Đã triển khai và kiểm tra:
+## 4. Khởi chạy trên máy hiện tại
 
-- WordPress: website LongTech.
-- MySQL: lưu dữ liệu WordPress.
-- phpMyAdmin: công cụ quản lý cơ sở dữ liệu.
-- Nginx: reverse proxy, ẩn số phiên bản Nginx và thêm các header:
-  - X-Content-Type-Options: nosniff
-  - X-Frame-Options: SAMEORIGIN
-  - Referrer-Policy: strict-origin-when-cross-origin
-- Website trả HTTP 200 tại thời điểm kiểm tra.
-- Dữ liệu WordPress và MySQL được lưu trong Docker named volumes.
-
-Chưa triển khai trong cấu hình Compose hiện tại:
-
-- Prometheus và Grafana: thu thập, hiển thị số liệu giám sát.
-- Loki và Promtail: thu thập, lưu trữ và truy vấn log.
-
-## 4. Khởi chạy
-
-Yêu cầu: Docker Engine và Docker Compose.
-
-Trên môi trường mới, tạo tệp cấu hình:
-
-```bash
-cp .env.example .env
-```
-
-Chỉnh các giá trị trong .env trước khi khởi chạy.
-Không ghi đè .env của môi trường đang hoạt động.
+Yêu cầu: Docker Engine, Docker Compose, Bash, Python 3, curl,
+OpenSSL, Git và các image đã có trên máy.
 
 ```bash
-docker compose -f docker-compose.yml up -d
-docker compose -f docker-compose.yml ps
+cd ~/longtech-product-website
+bash scripts/start.sh
+bash scripts/check-system.sh
 ```
 
-Truy cập website qua http://<IP-may-Ubuntu>/.
+Script start dùng --pull never để tránh tự thay image trong lúc demo.
+Nếu thiếu image, cần tải trước.
 
-Lưu ý: Compose khởi chạy các dịch vụ. Giao diện LongTech và dữ liệu
-15 sản phẩm cần được cài đặt/nhập riêng hoặc khôi phục từ bản sao lưu;
-chúng chưa được đóng gói trong repository ở mốc này.
+Website hiện tại:
+http://192.168.105.130/
 
-## 5. Sao lưu
+Đây là IP của máy triển khai, không phải địa chỉ dùng chung cho mọi máy.
 
-Đã tạo và chuyển sang Windows:
+## 5. Truy cập công cụ quản trị từ Windows
 
-- wordpress-files.tar.gz: tệp WordPress, giao diện và tài nguyên.
-- database.sql: bản xuất cơ sở dữ liệu.
-- project-config.tar.gz: cấu hình triển khai.
+Mở CMD hoặc PowerShell trên Windows:
 
-Đã kiểm tra tệp nén WordPress và dòng hoàn tất bản xuất SQL.
-Chưa thực hiện kiểm thử khôi phục.
+```powershell
+ssh -N -o ExitOnForwardFailure=yes -L 3000:127.0.0.1:3000 -L 9090:127.0.0.1:9090 -L 8081:127.0.0.1:8081 thanhlong@192.168.105.130
+```
 
-Các bản sao lưu có thể chứa thông tin nhạy cảm, không đưa lên repository công khai.
-Không dùng docker compose down -v nếu cần giữ dữ liệu.
+Giữ cửa sổ SSH này mở:
+- Grafana: http://localhost:3000/
+- Prometheus: http://localhost:9090/
+- phpMyAdmin: http://localhost:8081/
 
-## 6. Ghi chú
+Nếu cổng đã bị đường hầm khác sử dụng, đóng đường hầm cũ trước.
 
-Repository phục vụ bài thực hành môn Triển khai và Quản trị Hệ thống Phần mềm.
-Không commit tệp .env chứa thông tin đăng nhập.
+Grafana:
+- Tài khoản: admin.
+- Mật khẩu khởi tạo: data/grafana-admin-password.
+- Nếu đã đổi mật khẩu trong Grafana, sử dụng mật khẩu mới.
+- Dashboard: http://localhost:3000/d/longtech-overview
+
+phpMyAdmin sử dụng tài khoản database trong cấu hình .env.
+Mật khẩu Ubuntu, Grafana và MySQL là các thông tin đăng nhập riêng.
+
+## 6. Dừng và bật lại
+
+```bash
+docker compose -f docker-compose.yml \
+  -f docker-compose.monitoring.yml \
+  -f docker-compose.logging.yml stop
+```
+
+Bật lại:
+
+```bash
+bash scripts/start.sh
+```
+
+Các dịch vụ có restart: unless-stopped.
+Sau khi chủ động stop, dùng script start để bật lại.
+Sau khi khởi động lại Windows, cần mở lại đường hầm SSH để vào công cụ.
+Không dùng down -v nếu cần giữ dữ liệu.
+
+## 7. Giám sát và log
+
+Dashboard gồm:
+- Trạng thái kiểm tra HTTP.
+- Mã HTTP cuối cùng.
+- Thời gian kiểm tra.
+- Tỷ lệ mẫu thành công trong một giờ gần nhất.
+- Hai biểu đồ lịch sử trạng thái và thời gian kiểm tra.
+
+Đây là phép kiểm tra từ mạng Docker qua Nginx.
+Không đo tốc độ tải đầy đủ của trình duyệt, CPU/RAM hoặc đường mạng
+từ máy người dùng. Khoảng mất dữ liệu không được tính như mẫu thất bại.
+
+Prometheus giữ dữ liệu theo giới hạn 7 ngày hoặc kích thước 1 GB,
+tùy giới hạn nào đạt trước; đây không phải hạn mức tổng dung lượng volume.
+Loki được cấu hình retention 7 ngày.
+
+Trong Grafana Explore, chọn Loki để chạy truy vấn tại docs/log-queries.md.
+
+Khi container nguồn được tạo lại, chạy:
+
+```bash
+python3 scripts/refresh-log-targets.py
+```
+
+Script start đã thực hiện bước này trước khi khởi chạy Promtail.
+
+## 8. Các biện pháp bảo vệ đã áp dụng
+
+- MySQL không công bố cổng ra host; nằm trong mạng backend internal.
+- Grafana, Prometheus, Loki, phpMyAdmin chỉ bind cổng host trên 127.0.0.1.
+- Truy cập công cụ quản trị từ Windows qua đường hầm SSH.
+- Nginx ẩn số phiên bản và header X-Powered-By.
+- Các header: X-Content-Type-Options, X-Frame-Options, Referrer-Policy.
+- Grafana tắt đăng ký tự do và truy cập ẩn danh.
+- .env và data/ được Git bỏ qua.
+- Log Docker có xoay vòng: 10 MB/tệp, tối đa 3 tệp mỗi dịch vụ.
+
+Website hiện dùng HTTP, chưa triển khai HTTPS.
+Các biện pháp trên không thay thế kiểm thử bảo mật toàn diện.
+
+## 9. Sao lưu
+
+Trong thời gian sao lưu, tránh sửa nội dung/giao diện.
+
+```bash
+bash scripts/backup.sh
+cat data/latest-backup-path
+```
+
+Bản sao lưu nằm trong ~/longtech-backups/, gồm:
+- database.sql.
+- wordpress-files.tar.gz.
+- project-config.tar.gz.
+- repository.bundle.
+- site-manifest.json.
+- BACKUP-NOTES.txt.
+- SHA256SUMS.
+
+Có kiểm tra tệp nén, lịch sử Git và SHA-256.
+Bản sao lưu chứa mật khẩu và dữ liệu riêng tư; không đưa lên GitHub công khai.
+
+Không sao lưu lịch sử Prometheus/Loki hoặc database Grafana.
+Dashboard và datasource có thể dựng lại từ provisioning.
+Sao lưu SQL và tệp được thực hiện tuần tự, không phải snapshot đồng thời.
+
+## 10. Kết quả kiểm thử khôi phục
+
+Đã nhập SQL và giải nén WordPress vào volume riêng của project thử,
+sau đó khởi động WordPress qua PHP để đối chiếu:
+
+- theme=longtech-ready
+- siteurl=http://192.168.105.130
+- published_products=15
+- wordpress_version=7.1.1
+
+Kết quả: đạt. Minh chứng tại docs/evidence/restore-check-20261023-234231.txt.
+Chưa kiểm thử giao diện trình duyệt của môi trường phục hồi.
+Container thử được dừng sau kiểm tra; volume thử còn giữ trên máy.
+
+## 11. Triển khai trên máy mới và giới hạn
+
+Clone repository và chạy Compose chưa tự phục hồi website hiện tại.
+
+Cần:
+1. Cài các công cụ, tải image phù hợp.
+2. Tạo .env từ .env.example và đặt mật khẩu riêng.
+3. Tạo secret Grafana tại data/grafana-admin-password.
+4. Cài theme hoặc khôi phục tệp WordPress từ bản sao lưu.
+5. Khôi phục SQL vào database đúng cấu hình.
+6. Điều chỉnh URL WordPress nếu địa chỉ máy thay đổi.
+7. Cập nhật log targets và kiểm tra lại hệ thống.
+
+Không ghi đè .env trên máy đang hoạt động.
+Không ghi đè volume sản xuất để thử khôi phục.
+
+Các image hiện dùng tag latest/mysql:8.0; chưa khóa toàn bộ bằng digest.
+Promtail đã hết vòng đời hỗ trợ; Grafana Alloy là hướng nâng cấp.
+Hai volume ứng dụng hiện có thiếu nhãn Compose nên có cảnh báo khi chạy;
+đã xác nhận chúng được gắn đúng vào WordPress và MySQL.
