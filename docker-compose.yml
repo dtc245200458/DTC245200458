@@ -61,6 +61,7 @@ services:
       - "127.0.0.1:8081:80"
     networks:
       - backend
+      - admin
     logging:
       driver: json-file
       options:
@@ -90,5 +91,6 @@ volumes:
 
 networks:
   frontend:
+  admin:
   backend:
     internal: true
