@@ -14,7 +14,7 @@ compose=(
 
 "${compose[@]}" up -d --pull never \
   db wordpress nginx phpmyadmin \
-  prometheus blackbox grafana loki
+  prometheus blackbox nginx-exporter grafana loki
 
 python3 scripts/refresh-log-targets.py
 
