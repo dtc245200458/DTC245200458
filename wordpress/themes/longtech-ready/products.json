@@ -1,0 +1,122 @@
+[
+  [
+    "macbook-air-m4",
+    "MacBook Air 13 inch M4",
+    "laptop",
+    "Gọn nhẹ cho góc học tập và công việc di động.",
+    "Chip Apple M4;Màn hình 13,6 inch, 2560 × 1664;Bộ nhớ thống nhất từ 16GB",
+    "https://support.apple.com/vi-vn/122209"
+  ],
+  [
+    "vivobook-15",
+    "ASUS Vivobook 15 X1504",
+    "laptop",
+    "Không gian màn hình rộng cho tài liệu và bảng tính.",
+    "Màn hình 15,6 inch Full HD;Tần số quét 60Hz;CPU và RAM khác nhau theo mã cấu hình",
+    "https://www.asus.com/vn/laptops/for-home/vivobook/asus-vivobook-15-x1504/techspec/"
+  ],
+  [
+    "iphone-16",
+    "Apple iPhone 16",
+    "dien-thoai",
+    "Một lựa chọn để khám phá hệ sinh thái iOS.",
+    "Màn hình OLED 6,1 inch;Độ phân giải 2556 × 1179;Trọng lượng 170g",
+    "https://support.apple.com/vi-vn/121029"
+  ],
+  [
+    "galaxy-a56",
+    "Samsung Galaxy A56 5G",
+    "dien-thoai",
+    "Màn hình lớn cho kết nối và giải trí mỗi ngày.",
+    "Super AMOLED 6,7 inch, tối đa 120Hz;Chip Exynos 1580;Pin 5.000mAh điển hình, hỗ trợ sạc 45W",
+    "https://news.samsung.com/vn/samsung-danh-dau-buoc-tien-moi-voi-ai-danh-cho-moi-nguoi-tren-galaxy-a56-5g-galaxy-a36-5g-va-galaxy-a26-5g"
+  ],
+  [
+    "m240",
+    "Logitech M240 Silent",
+    "phu-kien",
+    "Chuột Bluetooth nhỏ gọn cho bàn học gọn gàng.",
+    "Kết nối Bluetooth;Thiết kế dùng được hai tay;Nút bấm giảm tiếng ồn",
+    "https://www.logitech.com/en-us/shop/p/m240-silent-bluetooth-mouse"
+  ],
+  [
+    "k650",
+    "Logitech Signature K650",
+    "phu-kien",
+    "Bàn phím không dây có chỗ gác tay tích hợp.",
+    "Kết nối không dây;Chỗ gác tay tích hợp;Pin tối đa 36 tháng theo hãng, tùy cách sử dụng",
+    "https://www.logitech.com/vi-vn/shop/p/k650-signature-wireless-keyboard"
+  ],
+  [
+    "pro14-m4",
+    "MacBook Pro 14 inch M4",
+    "laptop",
+    "Khám phá dòng Pro cho công việc và nội dung số.",
+    "Chip Apple M4, CPU 10 lõi;Liquid Retina XDR 14,2 inch;ProMotion với tần số quét thích ứng tối đa 120Hz",
+    "https://support.apple.com/en-us/121552"
+  ],
+  [
+    "zenbook14",
+    "ASUS Zenbook 14 OLED UX3405",
+    "laptop",
+    "Laptop OLED cho góc làm việc và nhu cầu di chuyển.",
+    "Màn hình OLED 14 inch;Bộ xử lý Intel Core Ultra tùy mã cấu hình;Độ phân giải, cảm ứng và bộ nhớ tùy phiên bản",
+    "https://www.asus.com/laptops/for-home/zenbook/asus-zenbook-14-oled-ux3405/techspec/"
+  ],
+  [
+    "vivobook-s14",
+    "ASUS Vivobook S 14 OLED S5406",
+    "laptop",
+    "Một lựa chọn màn hình OLED cho học tập và công việc.",
+    "Màn hình OLED 14 inch, tỷ lệ 16:10;Bộ xử lý Intel Core Ultra tùy mã cấu hình;Độ phân giải và bộ nhớ tùy phiên bản",
+    "https://www.asus.com/laptops/for-home/vivobook/asus-vivobook-s-14-oled-s5406/techspec/"
+  ],
+  [
+    "iphone15",
+    "Apple iPhone 15",
+    "dien-thoai",
+    "Khám phá iPhone với màn hình Dynamic Island.",
+    "Màn hình OLED 6,1 inch;Độ phân giải 2556 × 1179;Trọng lượng 171g",
+    "https://support.apple.com/en-us/111831"
+  ],
+  [
+    "iphone16pro",
+    "Apple iPhone 16 Pro",
+    "dien-thoai",
+    "Màn hình ProMotion trong thiết kế dòng Pro.",
+    "Màn hình OLED 6,3 inch;ProMotion với tần số quét thích ứng tối đa 120Hz;Trọng lượng 199g",
+    "https://support.apple.com/en-us/121031"
+  ],
+  [
+    "galaxy-a36",
+    "Samsung Galaxy A36 5G",
+    "dien-thoai",
+    "Điện thoại màn hình lớn cho học tập và giải trí.",
+    "Super AMOLED 6,7 inch, tối đa 120Hz;Chip Snapdragon 6 Gen 3;Pin 5.000mAh điển hình, hỗ trợ sạc 45W",
+    "https://news.samsung.com/vn/samsung-danh-dau-buoc-tien-moi-voi-ai-danh-cho-moi-nguoi-tren-galaxy-a56-5g-galaxy-a36-5g-va-galaxy-a26-5g"
+  ],
+  [
+    "h390",
+    "Logitech H390",
+    "phu-kien",
+    "Tai nghe có mic cho học trực tuyến và cuộc họp.",
+    "Kết nối USB có dây;Micro giảm tiếng ồn;Điều chỉnh âm lượng và tắt mic trên dây",
+    "https://www.logitech.com/en-us/shop/p/h390-usb-headset"
+  ],
+  [
+    "brio100",
+    "Logitech Brio 100",
+    "phu-kien",
+    "Webcam cho góc học tập và những cuộc gọi video.",
+    "Độ phân giải Full HD 1080p;Micro tích hợp;Nắp che riêng tư và cân bằng ánh sáng tự động",
+    "https://www.logitech.com/en-us/shop/p/brio-100-webcam"
+  ],
+  [
+    "lift",
+    "Logitech Lift",
+    "phu-kien",
+    "Khám phá kiểu chuột đứng cho bàn làm việc.",
+    "Thiết kế đứng với góc nghiêng 57 độ;Theo hãng phù hợp bàn tay nhỏ đến vừa;Có tùy chọn dành cho tay trái",
+    "https://www.logitech.com/en-us/shop/p/lift-vertical-ergonomic-mouse"
+  ]
+]

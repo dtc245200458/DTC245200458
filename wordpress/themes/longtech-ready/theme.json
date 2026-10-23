@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1120px",
+      "wideSize": "1280px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Nâu than",
+          "color": "#29221e"
+        },
+        {
+          "slug": "green",
+          "name": "Cam đậm",
+          "color": "#b84316"
+        },
+        {
+          "slug": "orange",
+          "name": "Cam tươi",
+          "color": "#e87524"
+        },
+        {
+          "slug": "peach",
+          "name": "Cam nhạt",
+          "color": "#f7bd87"
+        },
+        {
+          "slug": "paper",
+          "name": "Trắng",
+          "color": "#ffffff"
+        },
+        {
+          "slug": "mist",
+          "name": "Kem",
+          "color": "#fff4e8"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#29221e"
+    },
+    "typography": {
+      "fontFamily": "Arial, Helvetica, sans-serif",
+      "fontSize": "18px",
+      "lineHeight": "1.65"
+    },
+    "spacing": {
+      "blockGap": "24px"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "#b84316"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "#b84316",
+          "text": "#ffffff"
+        },
+        "border": {
+          "radius": "999px"
+        },
+        "typography": {
+          "fontSize": "16px"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Đầu trang",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Chân trang",
+      "area": "footer"
+    }
+  ]
+}
