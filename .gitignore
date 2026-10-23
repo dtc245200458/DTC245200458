@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Docker runtime/data
+data/
+logs/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
