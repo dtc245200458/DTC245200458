@@ -1,0 +1,5 @@
+theme=longtech-ready
+siteurl=http://192.168.105.130
+published_products=15
+wordpress_version=7.1.1
+KHOI PHUC WORDPRESS VA DATABASE: DAT
