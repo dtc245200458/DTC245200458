@@ -1,0 +1,23 @@
+services:
+  mysql-exporter:
+    image: prom/mysqld-exporter@sha256:afad0c59a154fea24ca5ea0e6f95f2b0b168601b111266963dc8a347715b5318
+    restart: unless-stopped
+    user: "65534:65534"
+    command:
+      - --config.my-cnf=/etc/mysql-exporter.cnf
+      - --mysqld.address=db:3306
+    volumes:
+      - ./data/mysql-exporter.cnf:/etc/mysql-exporter.cnf:ro
+    networks:
+      - backend
+      - monitoring
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

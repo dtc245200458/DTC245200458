@@ -8,13 +8,15 @@ compose=(
   -f docker-compose.yml
   -f docker-compose.monitoring.yml
   -f docker-compose.logging.yml
+  -f docker-compose.database-metrics.yml
 )
 
+test -s data/mysql-exporter.cnf
 "${compose[@]}" config --quiet
 
 "${compose[@]}" up -d --pull never \
   db wordpress nginx phpmyadmin \
-  prometheus blackbox nginx-exporter grafana loki
+  prometheus blackbox nginx-exporter mysql-exporter grafana loki
 
 python3 scripts/refresh-log-targets.py
 

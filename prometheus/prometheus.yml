@@ -32,3 +32,11 @@ scrape_configs:
           - nginx-exporter:9113
         labels:
           site: LongTech
+
+  - job_name: longtech_mysql
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - mysql-exporter:9104
+        labels:
+          site: LongTech
