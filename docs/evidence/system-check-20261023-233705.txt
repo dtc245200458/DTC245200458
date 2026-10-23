@@ -1,0 +1,38 @@
+2026-10-23T23:37:05+07:00
+NAME                    IMAGE                           COMMAND                  SERVICE      CREATED          STATUS                       PORTS
+longtech-blackbox-1     prom/blackbox-exporter:latest   "/bin/blackbox_expor…"   blackbox     53 minutes ago   Up 53 minutes                9115/tcp
+longtech-db-1           mysql:8.0                       "docker-entrypoint.s…"   db           29 hours ago     Up About an hour (healthy)   3306/tcp, 33060/tcp
+longtech-grafana-1      grafana/grafana:latest          "/run.sh"                grafana      53 minutes ago   Up 33 minutes                127.0.0.1:3000->3000/tcp
+longtech-loki-1         grafana/loki:latest             "/usr/bin/loki -conf…"   loki         33 minutes ago   Up 33 minutes                127.0.0.1:3100->3100/tcp
+longtech-nginx-1        nginx:alpine                    "/docker-entrypoint.…"   nginx        29 hours ago     Up About an hour             0.0.0.0:80->80/tcp, [::]:80->80/tcp
+longtech-phpmyadmin-1   phpmyadmin:latest               "/docker-entrypoint.…"   phpmyadmin   6 minutes ago    Up 6 minutes                 127.0.0.1:8081->80/tcp
+longtech-prometheus-1   prom/prometheus:latest          "/bin/prometheus --c…"   prometheus   53 minutes ago   Up 53 minutes                127.0.0.1:9090->9090/tcp
+longtech-promtail-1     grafana/promtail:latest         "/usr/bin/promtail -…"   promtail     33 minutes ago   Up 33 minutes
+longtech-wordpress-1    wordpress:latest                "docker-entrypoint.s…"   wordpress    29 hours ago     Up About an hour             80/tcp
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 23 Oct 2026 16:37:05 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://192.168.105.130/index.php?rest_route=/>; rel="https://api.w.org/"
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: strict-origin-when-cross-origin
+
+phpMyAdmin HTTP=200
+Prometheus Server is Ready.
+ready
+GRAFANA: OK, version=13.2.2
+HTTP PROBE: OK
+THEME=longtech-ready
+PUBLISHED_PRODUCTS=15
+.gitignore:2:.env	.env
+.gitignore:5:data/	data/grafana-admin-password
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        40G   18G   20G  47% /
+               total        used        free      shared  buff/cache   available
+Mem:           5.2Gi       2.2Gi       212Mi        52Mi       3.1Gi       3.0Gi
+Swap:          3.3Gi       616Ki       3.3Gi
+KIEM TRA HE THONG: DAT
