@@ -1,0 +1,366 @@
+{
+  "id": null,
+  "uid": "longtech-overview",
+  "title": "LongTech · Giám sát website",
+  "description": "Kiểm tra HTTP từ Blackbox Exporter qua Nginx trong mạng Docker. Không đo tốc độ tải đầy đủ của trình duyệt hoặc tài nguyên CPU/RAM.",
+  "tags": [
+    "LongTech",
+    "Prometheus",
+    "HTTP"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "editable": false,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Trạng thái HTTP hiện tại",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "probe_success{job=\"longtech_http\",site=\"LongTech\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu",
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "LỖI",
+                  "color": "red"
+                },
+                "1": {
+                  "text": "HOẠT ĐỘNG",
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Mã HTTP cuối cùng",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "probe_http_status_code{job=\"longtech_http\",site=\"LongTech\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu",
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Thời gian kiểm tra",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "probe_duration_seconds{job=\"longtech_http\",site=\"LongTech\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Tỷ lệ mẫu thành công · 1 giờ",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 18,
+        "y": 0,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "100 * avg_over_time(probe_success{job=\"longtech_http\",site=\"LongTech\"}[1h])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu",
+          "min": 0,
+          "max": 100,
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto",
+        "justifyMode": "center"
+      },
+      "description": "Tỷ lệ mẫu probe_success thành công trong một giờ gần nhất. Nếu chưa đủ một giờ, chỉ tính các mẫu đã có; không phản ánh khoảng thời gian không thu thập được dữ liệu."
+    },
+    {
+      "id": 5,
+      "title": "Thời gian kiểm tra theo thời gian",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 5,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "probe_duration_seconds{job=\"longtech_http\",site=\"LongTech\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": false,
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu",
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "spanNulls": false,
+            "showPoints": "never"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Lịch sử kiểm tra HTTP · 1 = đạt, 0 = lỗi",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "longtech-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 5,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "probe_success{job=\"longtech_http\",site=\"LongTech\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "longtech-prometheus"
+          },
+          "legendFormat": "LongTech",
+          "instant": false,
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          },
+          "noValue": "Chưa có dữ liệu",
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "spanNulls": false,
+            "showPoints": "never"
+          },
+          "min": 0,
+          "max": 1
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      }
+    }
+  ]
+}
