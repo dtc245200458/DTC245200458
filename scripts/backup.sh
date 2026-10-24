@@ -37,6 +37,9 @@ tar -czf "$BACKUP_DIR/project-config.tar.gz" \
   docker-compose.monitoring.yml \
   docker-compose.logging.yml \
   nginx blackbox prometheus grafana loki promtail scripts docs wordpress \
+  docker-compose.database-metrics.yml \
+  docker-compose.container-metrics.yml \
+  data/mysql-exporter.cnf \
   data/grafana-admin-password
 
 gzip -t "$BACKUP_DIR/project-config.tar.gz"
