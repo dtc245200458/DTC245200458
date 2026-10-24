@@ -1,0 +1,62 @@
+2026-10-24T15:40:09+07:00
+2026-10-24T15:40:09+07:00
+NAME                        IMAGE                                                                                          COMMAND                  SERVICE          CREATED        STATUS                  PORTS
+longtech-blackbox-1         prom/blackbox-exporter:latest                                                                  "/bin/blackbox_expor…"   blackbox         17 hours ago   Up 17 hours             9115/tcp
+longtech-cadvisor-1         ghcr.io/google/cadvisor:0.55.1                                                                 "/usr/bin/cadvisor -…"   cadvisor         14 hours ago   Up 14 hours (healthy)   127.0.0.1:8082->8080/tcp
+longtech-db-1               mysql:8.0                                                                                      "docker-entrypoint.s…"   db               45 hours ago   Up 17 hours (healthy)   3306/tcp, 33060/tcp
+longtech-grafana-1          grafana/grafana:latest                                                                         "/run.sh"                grafana          17 hours ago   Up 17 hours             127.0.0.1:3000->3000/tcp
+longtech-loki-1             grafana/loki:latest                                                                            "/usr/bin/loki -conf…"   loki             17 hours ago   Up 17 hours             127.0.0.1:3100->3100/tcp
+longtech-mysql-exporter-1   prom/mysqld-exporter@sha256:afad0c59a154fea24ca5ea0e6f95f2b0b168601b111266963dc8a347715b5318   "/bin/mysqld_exporte…"   mysql-exporter   14 hours ago   Up 14 hours             9104/tcp
+longtech-nginx-1            nginx:alpine                                                                                   "/docker-entrypoint.…"   nginx            45 hours ago   Up 17 hours             0.0.0.0:80->80/tcp, [::]:80->80/tcp
+longtech-nginx-exporter-1   nginx/nginx-prometheus-exporter:1.5.1                                                          "/usr/bin/nginx-prom…"   nginx-exporter   14 hours ago   Up 14 hours
+longtech-phpmyadmin-1       phpmyadmin:latest                                                                              "/docker-entrypoint.…"   phpmyadmin       16 hours ago   Up 16 hours             127.0.0.1:8081->80/tcp
+longtech-prometheus-1       prom/prometheus:latest                                                                         "/bin/prometheus --c…"   prometheus       17 hours ago   Up 14 hours             127.0.0.1:9090->9090/tcp
+longtech-promtail-1         grafana/promtail:latest                                                                        "/usr/bin/promtail -…"   promtail         17 hours ago   Up 17 hours
+longtech-wordpress-1        wordpress:latest                                                                               "docker-entrypoint.s…"   wordpress        45 hours ago   Up 17 hours             80/tcp
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 08:40:10 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://192.168.105.130/index.php?rest_route=/>; rel="https://api.w.org/"
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: strict-origin-when-cross-origin
+
+phpMyAdmin HTTP=200
+Prometheus Server is Ready.
+ready
+GRAFANA: OK, version=13.2.2
+HTTP PROBE: OK
+THEME=longtech-ready
+PUBLISHED_PRODUCTS=15
+.gitignore:2:.env	.env
+.gitignore:5:data/	data/grafana-admin-password
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        40G   18G   20G  49% /
+               total        used        free      shared  buff/cache   available
+Mem:           5.2Gi       2.2Gi       1.0Gi        49Mi       2.3Gi       3.0Gi
+Swap:          3.3Gi       445Mi       2.9Gi
+KIEM TRA HE THONG: DAT
+DAT: 12 dich vu dang chay
+DAT: Dong ho dong bo
+DAT: target prometheus
+DAT: target longtech_http
+DAT: target longtech_nginx
+DAT: target longtech_mysql
+DAT: target longtech_containers
+DAT: HTTP — 1 chuoi
+DAT: Nginx — 1 chuoi
+DAT: MySQL — 1 chuoi
+DAT: cAdvisor — 1 chuoi
+DAT: CPU — 12 chuoi
+DAT: RAM — 12 chuoi
+DAT: Nginx request/s — 1 chuoi
+DAT: Nginx connections — 1 chuoi
+DAT: MySQL connections — 1 chuoi
+DAT: MySQL questions/s — 1 chuoi
+DAT: Request moi da vao Loki
+DAT: Secret duoc Git bo qua
+KIEM TRA BO SUNG: DAT

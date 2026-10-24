@@ -1,0 +1,14 @@
+Thoi diem: 2026-10-24T02:12:21.011373+07:00
+Kiem tra truy van cho dashboard LongTech
+DAT: Website HTTP — 1 chuoi du lieu
+DAT: Nginx — 1 chuoi du lieu
+DAT: MySQL — 1 chuoi du lieu
+DAT: cAdvisor — 1 chuoi du lieu
+DAT: CPU theo dịch vụ — 100% = một lõi — 12 chuoi du lieu
+DAT: RAM working set theo dịch vụ — 12 chuoi du lieu
+DAT: Nginx — request mỗi giây — 1 chuoi du lieu
+DAT: Nginx — kết nối đang mở — 1 chuoi du lieu
+DAT: MySQL — kết nối hiện tại — 1 chuoi du lieu
+DAT: MySQL — câu lệnh từ client mỗi giây — 1 chuoi du lieu
+DAT: Thời gian kiểm tra HTTP — 1 chuoi du lieu
+DAT: Số container có dữ liệu RAM — 1 chuoi du lieu

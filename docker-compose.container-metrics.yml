@@ -1,0 +1,26 @@
+services:
+  cadvisor:
+    image: ghcr.io/google/cadvisor:0.55.1
+    restart: unless-stopped
+    privileged: true
+    cgroup: host
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=15s
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    ports:
+      - "127.0.0.1:8082:8080"
+    networks:
+      - monitoring
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

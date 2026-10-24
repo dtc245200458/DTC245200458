@@ -40,3 +40,19 @@ scrape_configs:
           - mysql-exporter:9104
         labels:
           site: LongTech
+
+  - job_name: longtech_containers
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - cadvisor:8080
+        labels:
+          site: LongTech
+    metric_relabel_configs:
+      - source_labels: [container_label_com_docker_compose_project]
+        regex: longtech
+        action: keep
+      - source_labels: [container_label_com_docker_compose_service]
+        target_label: service
+      - regex: container_label_.*
+        action: labeldrop
